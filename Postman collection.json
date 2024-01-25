@@ -1,0 +1,1371 @@
+{
+	"info": {
+		"_postman_id": "4a82606d-85d3-43bf-b13a-ac2901b056bc",
+		"name": "Team 2 CRM collection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "29607744",
+		"_collection_link": "https://warped-resonance-890488.postman.co/workspace/CRM-project~db3b6682-37e3-419f-83e4-42639f766c99/collection/29600527-4a82606d-85d3-43bf-b13a-ac2901b056bc?action=share&source=collection_link&creator=29607744"
+	},
+	"item": [
+		{
+			"name": "Leads API",
+			"item": [
+				{
+					"name": "List of all leads",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/obj/lead?limit=50&cursor=0&sort_field=email_text&descending=false",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"obj",
+								"lead"
+							],
+							"query": [
+								{
+									"key": "limit",
+									"value": "50"
+								},
+								{
+									"key": "cursor",
+									"value": "0"
+								},
+								{
+									"key": "sort_field",
+									"value": "email_text"
+								},
+								{
+									"key": "descending",
+									"value": "false"
+								},
+								{
+									"key": "constraints",
+									"value": "[{ \"key\": \"company_text\", \"constraint_type\": \"equals\", \"value\": \"Metsa OÜ\" }]",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List of all leads- cursor 10",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/obj/lead?cursor=10",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"obj",
+								"lead"
+							],
+							"query": [
+								{
+									"key": "cursor",
+									"value": "10"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List of all leads- sorting by company text",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/obj/lead?sort_field=company_text",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"obj",
+								"lead"
+							],
+							"query": [
+								{
+									"key": "sort_field",
+									"value": "company_text"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List of all leads- descending true",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/obj/lead?descending=true",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"obj",
+								"lead"
+							],
+							"query": [
+								{
+									"key": "descending",
+									"value": "true"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Lead data by unique Id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/obj/lead/:UniqueID",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"obj",
+								"lead",
+								":UniqueID"
+							],
+							"variable": [
+								{
+									"key": "UniqueID",
+									"value": "1681332024228x635179753980013000"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create a new lead",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"company_text\": \"Testing123\",\r\n  \"email_text\": \"testing@gmail.com\",\r\n  \"full_name_text\": \"Testing Testing\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/obj/lead",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"obj",
+								"lead"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create a new lead- company text missing",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"email_text\": \"testing@gmail.com\",\r\n  \"full_name_text\": \"Testing Testing\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/obj/lead",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"obj",
+								"lead"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create a new lead- full name text missing",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"company_text\": \"Testing123\",\r\n  \"email_text\": \"testing@gmail.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/obj/lead",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"obj",
+								"lead"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Mofidy lead data",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"company_text\": \"TEAMTWO\",\r\n  \"email_text\": \"TEAMTWO@gmail.com\",\r\n  \"full_name_text\": \"TEAMZEROTWO\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/obj/lead/:UniqueID",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"obj",
+								"lead",
+								":UniqueID"
+							],
+							"variable": [
+								{
+									"key": "UniqueID",
+									"value": "1694904765310x474501521002935100"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Replace lead data",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"company_text\": \"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz12345\",\r\n  \"email_text\": \"@@@\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/obj/lead/:UniqueID",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"obj",
+								"lead",
+								":UniqueID"
+							],
+							"variable": [
+								{
+									"key": "UniqueID",
+									"value": "1694904765310x474501521002935100"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete lead data",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/obj/lead/:UniqueID",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"obj",
+								"lead",
+								":UniqueID"
+							],
+							"variable": [
+								{
+									"key": "UniqueID",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Magicuser API",
+			"item": [
+				{
+					"name": "List of all magicusers",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/obj/magicuser?limit=50&cursor=0&sort_field=email_text&descending=false",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"obj",
+								"magicuser"
+							],
+							"query": [
+								{
+									"key": "limit",
+									"value": "50"
+								},
+								{
+									"key": "cursor",
+									"value": "0"
+								},
+								{
+									"key": "sort_field",
+									"value": "email_text"
+								},
+								{
+									"key": "descending",
+									"value": "false"
+								},
+								{
+									"key": "constraints",
+									"value": "[{\"key\": \"email_text\", \"constraint_type\": \"equals\", \"value\": \"mihai.rev@gmail.com\" }]",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List of all magicusers- cursor with comma",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/obj/magicuser?limit=50,5&cursor=9,9",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"obj",
+								"magicuser"
+							],
+							"query": [
+								{
+									"key": "limit",
+									"value": "50,5"
+								},
+								{
+									"key": "cursor",
+									"value": "9,9"
+								},
+								{
+									"key": "sort_field",
+									"value": "email_text",
+									"disabled": true
+								},
+								{
+									"key": "descending",
+									"value": "false",
+									"disabled": true
+								},
+								{
+									"key": "constraints",
+									"value": "[{\"key\": \"email_text\", \"constraint_type\": \"equals\", \"value\": \"mihai.rev@gmail.com\" }]",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create a list of all magicusers",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"email_text\": \"team2@gmail.com\",\r\n  \"link_opened_boolean\": true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/obj/magicuser",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"obj",
+								"magicuser"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Funnels API",
+			"item": [
+				{
+					"name": "Get the list of all funnels",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/obj/funnel",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"obj",
+								"funnel"
+							],
+							"query": [
+								{
+									"key": "limit",
+									"value": "150",
+									"disabled": true
+								},
+								{
+									"key": "cursor",
+									"value": "1",
+									"disabled": true
+								},
+								{
+									"key": "sort_field",
+									"value": "name_text",
+									"disabled": true
+								},
+								{
+									"key": "sort_field",
+									"value": "Created Dat",
+									"disabled": true
+								},
+								{
+									"key": "sort_field",
+									"value": "Created By",
+									"disabled": true
+								},
+								{
+									"key": "descending",
+									"value": "false",
+									"disabled": true
+								},
+								{
+									"key": "constraints",
+									"value": "[{\"key\":\"name_text\",\"constraint_type\":\"is_empty\"}]",
+									"disabled": true
+								},
+								{
+									"key": "constraints",
+									"value": "[{\"key\":\"stage_list_custom_stage\",\"constraint_type\":\"is_empty\"}]",
+									"disabled": true
+								},
+								{
+									"key": "constraints",
+									"value": "[{\"key\":\"members_list_user\",\"constraint_type\":\"is_empty\"}]",
+									"disabled": true
+								},
+								{
+									"key": "constraints",
+									"value": "[{ \"key\": \"name_text\", \"constraint_type\": \"equals\", \"value\": \"HHH TtEST\" }]",
+									"disabled": true
+								},
+								{
+									"key": "constraints",
+									"value": "[{ \"key\": \"name_text\", \"constraint_type\": \"equals\", \"value\": \"Offer sent to client \" }]",
+									"disabled": true
+								},
+								{
+									"key": "constraints",
+									"value": "[{\"key\":\"members_list_user\",\"constraint_type\":\"is_not_empty\"}]",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get the list of all funnels- values with commas",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/obj/funnel?limit=10,5",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"obj",
+								"funnel"
+							],
+							"query": [
+								{
+									"key": "limit",
+									"value": "10,5"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get the list of all funnels- negative limit value",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/obj/funnel?limit=-30",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"obj",
+								"funnel"
+							],
+							"query": [
+								{
+									"key": "limit",
+									"value": "-30"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get funnel data by unique Id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/obj/funnel/:UniqueID",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"obj",
+								"funnel",
+								":UniqueID"
+							],
+							"variable": [
+								{
+									"key": "UniqueID",
+									"value": "1678717895619x961701523337510900"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create a new funnel",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"members_list_user\": [\r\n    \"1625051658962x581289845978797800\",\r\n    \"1657897085311x920666300518670800\"\r\n  ],\r\n  \"name_text\": \"PROOVIME VEELVEEL\",\r\n  \"stage_list_custom_stage\": [\r\n    \"1694600954727x545392826559981250\"\r\n  ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/obj/funnel",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"obj",
+								"funnel"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create a new funnel- memeber list missing",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"members_list_user\": [],\r\n  \"name_text\": \"PROOVIME VEELVEELVEEL\",\r\n  \"stage_list_custom_stage\": [\r\n    \"1694600954727x545392826559981250\"\r\n  ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/obj/funnel",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"obj",
+								"funnel"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create a new funnel- member list and stage list missing",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"members_list_user\": [],\r\n  \"name_text\": \"PROOVIME VEELVEELVEELVEEL\",\r\n  \"stage_list_custom_stage\": []\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/obj/funnel",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"obj",
+								"funnel"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create a new funnel- stage list missing",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"members_list_user\": [\r\n    \"1625051658962x581289845978797800\",\r\n    \"1657897085311x920666300518670800\"\r\n  ],\r\n  \"name_text\": \"PROOVIME VEELVEELVEELVEEL\",\r\n  \"stage_list_custom_stage\": []\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/obj/funnel",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"obj",
+								"funnel"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create a new funnel- empty",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"members_list_user\": [],\r\n  \"stage_list_custom_stage\": []\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/obj/funnel",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"obj",
+								"funnel"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Modify funnel data",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"members_list_user\": [\r\n    \"1625051658962x581289845978797800\",\r\n    \"1657897085311x920666300518670800\"\r\n  ],\r\n  \"name_text\": \"PROOVIME VEELVEEL\",\r\n  \"stage_list_custom_stage\": [\r\n    \"1694600954727x545392826559981250\"\r\n  ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/obj/funnel/:UniqueID",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"obj",
+								"funnel",
+								":UniqueID"
+							],
+							"variable": [
+								{
+									"key": "UniqueID",
+									"value": "1694907406913x156601850266780740"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Modify funnel data- name changed",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"members_list_user\": [\r\n    \"1625051658962x581289845978797800\",\r\n    \"1657897085311x920666300518670800\"\r\n  ],\r\n  \"name_text\": \"PROOVIME VEELVEEL hh\",\r\n  \"stage_list_custom_stage\": [\r\n    \"1694600954727x545392826559981250\"\r\n  ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/obj/funnel/:UniqueID",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"obj",
+								"funnel",
+								":UniqueID"
+							],
+							"variable": [
+								{
+									"key": "UniqueID",
+									"value": "1694907406913x156601850266780740"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Modify funnel data- one member and one stage removed",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"members_list_user\": [\r\n    \"1625051658962x581289845978797800\"\r\n  ],\r\n  \"name_text\": \"PROOVIME VEELVEEL hh\",\r\n  \"stage_list_custom_stage\": [\r\n    \"1694600954727x545392826559981250\",\r\n    \"1694600954727x545392826559981250\"\r\n  ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/obj/funnel/:UniqueID",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"obj",
+								"funnel",
+								":UniqueID"
+							],
+							"variable": [
+								{
+									"key": "UniqueID",
+									"value": "1694907406913x156601850266780740"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Replace funnel data",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/obj/funnel/:UniqueID",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"obj",
+								"funnel",
+								":UniqueID"
+							],
+							"variable": [
+								{
+									"key": "UniqueID",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete funnel",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/obj/funnel/:UniqueID",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"obj",
+								"funnel",
+								":UniqueID"
+							],
+							"variable": [
+								{
+									"key": "UniqueID",
+									"value": "1694908936145x266673688971558620"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Stages API",
+			"item": [
+				{
+					"name": "list of all stages",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/obj/stage",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"obj",
+								"stage"
+							],
+							"query": [
+								{
+									"key": "limit",
+									"value": "100",
+									"disabled": true
+								},
+								{
+									"key": "cursor",
+									"value": "0",
+									"disabled": true
+								},
+								{
+									"key": "sort_field",
+									"value": "name_text",
+									"disabled": true
+								},
+								{
+									"key": "sort_field",
+									"value": "Created Date",
+									"disabled": true
+								},
+								{
+									"key": "sort_field",
+									"value": "Modified Date",
+									"disabled": true
+								},
+								{
+									"key": "descending",
+									"value": "false",
+									"disabled": true
+								},
+								{
+									"key": "constraints",
+									"value": "[{\"key\":\"name_text\",\"constraint_type\":\"is_empty\"}]",
+									"disabled": true
+								},
+								{
+									"key": "constraints",
+									"value": "[{ \"key\": \"color_option_colors\", \"constraint_type\": \"equals\", \"value\": \"Orange\" }]",
+									"disabled": true
+								},
+								{
+									"key": "constraints",
+									"value": "[{\"key\":\"color_option_colors\",\"constraint_type\":\"is_empty\"}]",
+									"disabled": true
+								},
+								{
+									"key": "constraints",
+									"value": "[{ \"key\": \"name_text\", \"constraint_type\": \"equals\", \"value\": \"Offer sent to client \" }]",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "stage data by unique Id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/obj/stage/:UniqueID",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"obj",
+								"stage",
+								":UniqueID"
+							],
+							"variable": [
+								{
+									"key": "UniqueID",
+									"value": "1694881805480x767863788343134100"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create a new stage",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"color_option_colors\": \"Pinkish\",\r\n  \"deals_list_custom_deal1\": [],\r\n  \"name_text\": \"TERE TALI TERE TALI\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/obj/stage",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"obj",
+								"stage"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create a new stage (colour+name)",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"color_option_colors\": \"Green\",\r\n  \"deals_list_custom_deal1\": [],\r\n  \"name_text\": \"TERE TALI stage 1\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/obj/stage",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"obj",
+								"stage"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create a new stage (colour)",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"color_option_colors\": \"Green\",\r\n  \"deals_list_custom_deal1\": [],\r\n  \"name_text\": []\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/obj/stage",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"obj",
+								"stage"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create a new stage (name)",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"color_option_colors\": [],\r\n  \"deals_list_custom_deal1\": [],\r\n  \"name_text\": \"TERE TALI stage 1\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/obj/stage",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"obj",
+								"stage"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "mofidy stage data",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"color_option_colors\": \"string\",\r\n  \"deals_list_custom_deal1\": ,\r\n  \"name_text\": \"string\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/obj/stage/:UniqueID",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"obj",
+								"stage",
+								":UniqueID"
+							],
+							"variable": [
+								{
+									"key": "UniqueID",
+									"value": "1694900879617x533733237513232200"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "mofidy stage data (green2blue)",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "  {\r\n  \"color_option_colors\": \"Green\",\r\n  \"deals_list_custom_deal1\": [],\r\n  \"name_text\": \"TRIAL stage 1\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/obj/stage/:UniqueID",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"obj",
+								"stage",
+								":UniqueID"
+							],
+							"variable": [
+								{
+									"key": "UniqueID",
+									"value": "1694881805480x767863788343134100"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "mofidy stage data (1 to 11)",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "  {\r\n  \"color_option_colors\": \"Green\",\r\n  \"deals_list_custom_deal1\": [],\r\n  \"name_text\": \"TRIAL stage 11\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/obj/stage/:UniqueID",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"obj",
+								"stage",
+								":UniqueID"
+							],
+							"variable": [
+								{
+									"key": "UniqueID",
+									"value": "1694881805480x767863788343134100"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "replace stage data",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"color_option_colors\": \"string\",\r\n  \"deals_list_custom_deal1\": [\r\n    \"string\"\r\n  ],\r\n  \"funnel_custom_funnel1\": \"string\",\r\n  \"name_text\": \"string\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/obj/funnel/:UniqueID",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"obj",
+								"funnel",
+								":UniqueID"
+							],
+							"variable": [
+								{
+									"key": "UniqueID",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "replace stage data (example)",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "  {\r\n  \"color_option_colors\": \"Blue\",\r\n  \"deals_list_custom_deal1\": [],\r\n  \"name_text\": \"TRIAL stage 1\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/obj/funnel/:UniqueID",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"obj",
+								"funnel",
+								":UniqueID"
+							],
+							"variable": [
+								{
+									"key": "UniqueID",
+									"value": "1694881805480x767863788343134100"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete stage",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/obj/stage/:UniqueID",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"obj",
+								"stage",
+								":UniqueID"
+							],
+							"variable": [
+								{
+									"key": "UniqueID",
+									"value": "1694896847874x274433093182032450"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "b30ca93d0a7ebe389e9326a22497bf38",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "baseURL",
+			"value": "https://cerebrumhubcrmlite.bubbleapps.io/api/1.1"
+		}
+	]
+}
